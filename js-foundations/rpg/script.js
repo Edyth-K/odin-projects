@@ -6,6 +6,21 @@ let fighting;
 let monsterHealth;
 let inventory = ["stick"];
 
+const bg = document.querySelector('#bg');
+const bgLocations = [
+    "https://i.pinimg.com/736x/6b/6a/85/6b6a8579ba67c3a55cfcfe3e5d653063.jpg", //town 0
+    "https://fc07.deviantart.net/fs71/f/2013/107/f/2/the_armor_shop_by_sweetmoon-d622tbg.jpg", //shop 1
+    "https://i.pinimg.com/736x/9d/53/7f/9d537fc4864157d3f460159478ae4504.jpg", //cave 2
+    "https://images3.alphacoders.com/115/1155860.jpg", // slime 3
+    "https://i.pinimg.com/736x/eb/4f/02/eb4f022643904349d867bb5231465a62.jpg", // wolf 4
+    "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2022/10/God-of-War-Dragon-Boss-Fight.jpg", // dragon 5
+    "https://pics.craiyon.com/2023-10-02/f480549d977c4916a7c835890d7fc88b.webp", // treasure 6
+    "https://static.wikia.nocookie.net/game-over-dex/images/5/54/GameOver.png/revision/latest?cb=20141104161443", //death 7
+    "https://miro.medium.com/v2/resize:fill:1200:675/g:fp:0.5:0.41/1*bn2dPjCvJw3-ZNM-dG9mwg.jpeg", //victory 8
+    "https://www.shutterstock.com/shutterstock/videos/1100731021/thumb/12.jpg?ip=x480" // casino 9
+]
+
+const bgSelector = 0;
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
@@ -95,6 +110,10 @@ button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
 
+function updateBg(id) {
+    bg.src = bgLocations[id];
+}
+
 function update(location) {
   monsterStats.style.display = "none";
   button1.innerText = location["button text"][0];
@@ -108,14 +127,17 @@ function update(location) {
 
 function goTown() {
   update(locations[0]);
+  updateBg(0);
 }
 
 function goStore() {
   update(locations[1]);
+  updateBg(1);
 }
 
 function goCave() {
   update(locations[2]);
+  updateBg(2);
 }
 
 function buyHealth() {
@@ -178,6 +200,15 @@ function fightDragon() {
 
 function goFight() {
   update(locations[3]);
+  if (fighting == 0) {
+    updateBg(3);
+  } else if (fighting == 1) {
+    updateBg(4);
+  } else {
+    updateBg(5);
+  }
+
+
   monsterHealth = monsters[fighting].health;
   monsterStats.style.display = "block";
   monsterName.innerText = monsters[fighting].name;
@@ -230,14 +261,17 @@ function defeatMonster() {
   goldText.innerText = gold;
   xpText.innerText = xp;
   update(locations[4]);
+  updateBg(6);
 }
 
 function lose() {
   update(locations[5]);
+  updateBg(7);
 }
 
 function winGame() {
   update(locations[6]);
+  updateBg(8);
 }
 
 function restart() {
@@ -254,6 +288,7 @@ function restart() {
 
 function easterEgg() {
   update(locations[7]);
+  updateBg(9);
 }
 
 function pickTwo() {
