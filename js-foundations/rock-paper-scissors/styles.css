@@ -1,0 +1,28 @@
+#container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 500px;
+    max-height: 400px;
+    background-color: #ffffff;
+    color: #ffffff;
+    margin: 30px auto 0px;
+    padding: 10px;
+}
+
+#text, #buttons {
+    border: 1px solid #0a0a23;
+    padding: 5px;
+    color: #0a0a23;
+    display: flex;
+    
+}
+
+#text {
+    text-align: center;
+    flex-direction: column;
+}
+
+#buttons {
+    justify-content: space-around;
+}
